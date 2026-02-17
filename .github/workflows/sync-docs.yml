@@ -17,7 +17,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
       - name: Sync files to docs folder
@@ -37,5 +36,9 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add docs/
-          git diff --staged --quiet || git commit -m "Auto-sync portfolio files to docs folder"
-          git push
+          if ! git diff --staged --quiet; then
+            git commit -m "Auto-sync portfolio files to docs folder [skip ci]"
+            git push
+          else
+            echo "No changes to commit"
+          fi
