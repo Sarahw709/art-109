@@ -1,0 +1,41 @@
+name: Sync Portfolio to Docs
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'Tutorials/03-css-single-page-portfolio/**'
+      - '.github/workflows/sync-docs.yml'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Sync files to docs folder
+        run: |
+          # Remove old docs content (except .nojekyll and test.html if needed)
+          rm -rf docs/css docs/images
+          rm -f docs/index.html
+          
+          # Copy new files from Tutorials folder
+          cp -r Tutorials/03-css-single-page-portfolio/* docs/
+          
+          # Keep .nojekyll file
+          touch docs/.nojekyll
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add docs/
+          git diff --staged --quiet || git commit -m "Auto-sync portfolio files to docs folder"
+          git push
