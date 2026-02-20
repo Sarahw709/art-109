@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'Tutorials/03-css-single-page-portfolio/**'
+      - 'Tutorials/04-css-transitions/**'
       - '.github/workflows/sync-docs.yml'
 
 jobs:
@@ -21,15 +22,14 @@ jobs:
 
       - name: Sync files to docs folder
         run: |
-          # Remove old docs content (except .nojekyll and test.html if needed)
+          # Sync 03 portfolio (root of site)
           rm -rf docs/css docs/images
           rm -f docs/index.html
-          
-          # Copy new files from Tutorials folder
           cp -r Tutorials/03-css-single-page-portfolio/* docs/
-          
-          # Keep .nojekyll file
           touch docs/.nojekyll
+          # Sync 04-css-transitions (subfolder)
+          rm -rf docs/04-css-transitions
+          cp -r Tutorials/04-css-transitions docs/
 
       - name: Commit and push changes
         run: |
