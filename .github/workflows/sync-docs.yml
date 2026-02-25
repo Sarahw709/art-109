@@ -7,6 +7,7 @@ on:
     paths:
       - 'Tutorials/03-css-single-page-portfolio/**'
       - 'Tutorials/04-css-transitions/**'
+      - 'Tutorials/05-css-portfolio-grid/**'
       - '.github/workflows/sync-docs.yml'
 
 jobs:
@@ -30,6 +31,11 @@ jobs:
           # Sync 04-css-transitions (subfolder)
           rm -rf docs/04-css-transitions
           cp -r Tutorials/04-css-transitions docs/
+          # Sync 05-css-portfolio-grid (subfolder)
+          rm -rf docs/05-css-portfolio-grid
+          cp -r Tutorials/05-css-portfolio-grid docs/
+          mkdir -p docs/05-css-portfolio-grid/images
+          cp docs/images/*.jpg docs/05-css-portfolio-grid/images/ 2>/dev/null || true
 
       - name: Commit and push changes
         run: |
