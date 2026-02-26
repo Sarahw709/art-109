@@ -8,6 +8,7 @@ on:
       - 'Tutorials/03-css-single-page-portfolio/**'
       - 'Tutorials/04-css-transitions/**'
       - 'Tutorials/05-css-portfolio-grid/**'
+      - 'Tutorials/06-dom/**'
       - '.github/workflows/sync-docs.yml'
 
 jobs:
@@ -36,6 +37,9 @@ jobs:
           cp -r Tutorials/05-css-portfolio-grid docs/
           mkdir -p docs/05-css-portfolio-grid/images
           cp docs/images/*.jpg docs/05-css-portfolio-grid/images/ 2>/dev/null || true
+          # Sync 06-dom (subfolder)
+          rm -rf docs/06-dom
+          cp -r Tutorials/06-dom docs/
 
       - name: Commit and push changes
         run: |
