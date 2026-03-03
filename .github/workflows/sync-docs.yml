@@ -9,6 +9,8 @@ on:
       - 'Tutorials/04-css-transitions/**'
       - 'Tutorials/05-css-portfolio-grid/**'
       - 'Tutorials/06-dom/**'
+      - 'Tutorials/07-css-portfolio-grid-multiple-pages/**'
+      - 'Tutorials/08-css-portfolio-grid-lightbox/**'
       - '.github/workflows/sync-docs.yml'
 
 jobs:
@@ -40,6 +42,12 @@ jobs:
           # Sync 06-dom (subfolder)
           rm -rf docs/06-dom
           cp -r Tutorials/06-dom docs/
+          # Sync 07-css-portfolio-grid-multiple-pages (subfolder)
+          rm -rf docs/07-css-portfolio-grid-multiple-pages
+          cp -r Tutorials/07-css-portfolio-grid-multiple-pages docs/
+          # Sync 08-css-portfolio-grid-lightbox (subfolder)
+          rm -rf docs/08-css-portfolio-grid-lightbox
+          cp -r Tutorials/08-css-portfolio-grid-lightbox docs/
 
       - name: Commit and push changes
         run: |
