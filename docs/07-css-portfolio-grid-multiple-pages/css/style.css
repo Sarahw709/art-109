@@ -1,11 +1,11 @@
 /* ----------------------color palette */
 
 :root {
-    --bg-color-1: #cfc7bd;
+    --bg-color-1: #eae4dd;
     --bg-color-2: #ded8d6;
-    --font: #3c3533;
+    --font: #48372f;
     --accent-1: #484240;
-    --accent-2: #ae5a3b;
+    --accent-2: #6d6943;
 }
 
 
@@ -56,7 +56,7 @@ header {
 }
 
 header h1 {
-    text-shadow: -5px 5px 0px #ae5a3bcc, -10px 10px 0px #ae5a3b99, -15px 15px 0px #ae5a3b44;
+    text-shadow: -5px 5px 0px #6d6943cc, -10px 10px 0px #6d694399, -15px 15px 0px #6d694344;
 }
 
 nav a {
