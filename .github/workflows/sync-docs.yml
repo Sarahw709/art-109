@@ -1,6 +1,7 @@
 name: Sync Portfolio to Docs
 
 on:
+  workflow_dispatch:  # Lets you run "Sync Portfolio to Docs" manually from Actions tab
   push:
     branches:
       - main
