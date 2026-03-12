@@ -1,18 +1,11 @@
 name: Sync Portfolio to Docs
 
 on:
-  workflow_dispatch:  # Lets you run "Sync Portfolio to Docs" manually from Actions tab
+  workflow_dispatch:  # Run manually from Actions tab to force sync
   push:
     branches:
       - main
-    paths:
-      - 'Tutorials/03-css-single-page-portfolio/**'
-      - 'Tutorials/04-css-transitions/**'
-      - 'Tutorials/05-css-portfolio-grid/**'
-      - 'Tutorials/06-dom/**'
-      - 'Tutorials/07-css-portfolio-grid-multiple-pages/**'
-      - 'Tutorials/08-css-portfolio-grid-lightbox/**'
-      - '.github/workflows/sync-docs.yml'
+    # No path filter: run on every push so Tutorials → docs sync always happens and live site updates
 
 jobs:
   sync:
