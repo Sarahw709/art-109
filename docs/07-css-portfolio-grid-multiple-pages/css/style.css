@@ -163,7 +163,15 @@ main {
 }
 
 .project-content img {
-    margin: 0 auto;
+    margin: 1rem auto 0;
+}
+
+.project-content iframe {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
+    margin: 1rem auto 0;
 }
 
 .project-content p {
