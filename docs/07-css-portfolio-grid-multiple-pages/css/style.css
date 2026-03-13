@@ -233,9 +233,9 @@ footer img {
 /* -------------------- flex styling */
 
 .flex-container {
-    display: flex;
+    display:flex;
     justify-content: space-between;
-    align-items: center;
+    align-items:center;
 }
 
 .flex-container-grid {
@@ -243,7 +243,7 @@ footer img {
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
-    align-items: stretch;
+    align-items:center;
 }
 
 .flex-item-grid {
