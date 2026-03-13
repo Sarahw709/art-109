@@ -1,8 +1,12 @@
 # Deploy docs folder to GitHub Pages (ensures subfolders like 05-css-portfolio-grid work)
+# Runs AFTER Sync Portfolio to Docs so the live site always gets the latest Tutorials → docs content.
 name: Deploy to GitHub Pages
 
 on:
-  push:
+  workflow_run:
+    workflows: ["Sync Portfolio to Docs"]
+    types:
+      - completed
     branches: [main]
   workflow_dispatch:
 
@@ -24,6 +28,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
