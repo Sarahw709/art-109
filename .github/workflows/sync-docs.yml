@@ -42,6 +42,9 @@ jobs:
           # Sync 08-css-portfolio-grid-lightbox (subfolder)
           rm -rf docs/08-css-portfolio-grid-lightbox
           cp -r Tutorials/08-css-portfolio-grid-lightbox docs/
+          # Sync 09-portfolio-p5 (subfolder)
+          rm -rf docs/09-portfolio-p5
+          cp -r Tutorials/09-portfolio-p5 docs/
 
       - name: Commit and push changes
         run: |
