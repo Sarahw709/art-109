@@ -1,21 +1,28 @@
 /**
- * Scrambled text: random chars reveal left → right, then lock to final title.
- * Keeps data-text in sync so .glitch ::before / ::after stay aligned.
+ * Scramble loop — text appearance comes only from your CSS; this only changes characters.
+ * Keeps data-text in sync if you add ::before/::after later.
  */
 (function () {
     const el = document.querySelector('.glitch');
     if (!el) return;
 
-    const final = el.getAttribute('data-final') || el.textContent.trim();
+    const final = el.getAttribute('data-final') || el.getAttribute('data-text') || el.textContent.trim();
     if (!final) return;
-    const charset = '█▓▒░<>/\\|{}[]$#@!%&*+-=?:;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
+    const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789█▓░<>/\\|!?@#$%&*';
+
+    const framesPerChar = 4;
+    const holdMs = 1400;
     let frame = 0;
-    const framesPerChar = 5;
-    const totalFrames = final.length * framesPerChar + 12;
+    const scrambleFrames = final.length * framesPerChar + 8;
 
     function randomChar() {
         return charset[Math.floor(Math.random() * charset.length)];
+    }
+
+    function applyText(str) {
+        el.textContent = str;
+        el.setAttribute('data-text', str);
     }
 
     function tick() {
@@ -28,26 +35,26 @@
                 out += ' ';
                 continue;
             }
-            if (i < unlocked) {
-                out += c;
-            } else {
-                out += randomChar();
-            }
+            out += i < unlocked ? c : randomChar();
         }
 
-        el.textContent = out;
-        el.setAttribute('data-text', out);
-
+        applyText(out);
         frame += 1;
-        if (frame < totalFrames) {
+
+        if (frame < scrambleFrames) {
             requestAnimationFrame(tick);
-        } else {
-            el.textContent = final;
-            el.setAttribute('data-text', final);
+            return;
         }
+
+        applyText(final);
+        setTimeout(startCycle, holdMs);
     }
 
-    el.textContent = '';
-    el.setAttribute('data-text', '');
-    requestAnimationFrame(tick);
+    function startCycle() {
+        frame = 0;
+        applyText('');
+        requestAnimationFrame(tick);
+    }
+
+    startCycle();
 })();
