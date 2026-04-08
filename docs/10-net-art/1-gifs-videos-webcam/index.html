@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gif + Video tut</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/ehx9YLv6vDk?si=FbcEOA0PP-uBysek"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <img src="media/flowers copy.gif" alt="flowers" class="flowers">
+        <div class="lorem">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Non labore dolor nihil possimus consequatur
+                quaerat ipsam. Corporis numquam molestiae ullam nemo dolorum fuga beatae dignissimos iste fugit. Culpa,
+                adipisci veritatis!
+            </p>
+            <img src="media/glitter copy.gif" alt="glitter" class="glitter">
+        </div>
+        <!-- autoplay video -->
+        <video autoplay muted loop>
+            <source src="media/suprematism movement.mp4" type="video/mp4">
+        </video>
+        <video class="hover-video" muted loop>
+            <source src="media/suprematism movement.mp4" type="video/mp4">
+        </video>
+        <video class="hover-video" muted loop>
+            <source src="media/suprematism movement.mp4" type="video/mp4">
+        </video>
+        <!-- click on play video -->
+        </video>
+        <video class="click-video" muted loop>
+            <source src="media/suprematism movement.mp4" type="video/mp4">
+        </video>
+
+        <video id="webcam" autoplay playsinline></video>
+    </main>
+
+
+    <script src="js/video.js"></script>
+    <script src="js/webcam.js"></script>
+</body>
+
+</html>
