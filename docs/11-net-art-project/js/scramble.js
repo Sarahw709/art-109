@@ -1,7 +1,4 @@
-/**
- * Scramble loop — text appearance comes only from your CSS; this only changes characters.
- * Keeps data-text in sync if you add ::before/::after later.
- */
+
 (function () {
     const el = document.querySelector('.glitch');
     if (!el) return;
