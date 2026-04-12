@@ -1,3 +1,19 @@
+body {
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Phrases spawned by js/main.js on click */
+.click-phrase {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    font-family: monospace;
+    font-size: 1rem;
+    color: #333;
+    max-width: min(90vw, 20rem);
+}
+
 .glitch {
     font-family: monospace;
     display: flex;
