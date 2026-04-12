@@ -3,6 +3,26 @@ body {
     margin: 0;
 }
 
+/* Center hint — pointer-events: none so the first click still reaches the page */
+.click-hint {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    font-family: monospace;
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    color: #555;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+}
+
+.click-hint.is-hidden {
+    opacity: 0;
+}
+
 /* Phrases spawned by js/main.js on click */
 .click-phrase {
     position: fixed;

@@ -1,12 +1,23 @@
-/**
- * Each click: show a phrase at a random position on the screen.
- * Edit PHRASES or use a single string in DEFAULT_PHRASE.
- */
 (function () {
+    const hint = document.querySelector('.click-hint');
+
     const PHRASES = [
-        'overthink',
-        'again',
-        'pause',
+        'today was a long day',
+        'did i do enough today?',
+        'i feel like i was too quiet',
+        'does anyone even like me',
+        'what if i dont have any real friends',
+        'why do i look the way i do',
+        'i have to stop picking at my face',
+        'but i cant stop',
+        'why am i the way i am',
+        'maybe something is wrong with me',
+        'im so insufferable',
+        'whats the point',
+        'STOP TOUCHING YOUR FACE',
+        'how do i turn off my brain',
+        'why did you talk so much',
+        'none of your friends like you',
     ];
 
     const DEFAULT_PHRASE = 'hello';
@@ -31,5 +42,17 @@
         document.body.appendChild(el);
     }
 
-    document.addEventListener('click', placePhrase);
+    function onPageClick() {
+        if (hint && hint.parentNode) {
+            hint.classList.add('is-hidden');
+            const removeHint = () => {
+                if (hint.parentNode) hint.remove();
+            };
+            hint.addEventListener('transitionend', removeHint, { once: true });
+            setTimeout(removeHint, 500);
+        }
+        placePhrase();
+    }
+
+    document.addEventListener('click', onPageClick);
 })();
