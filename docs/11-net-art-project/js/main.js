@@ -32,7 +32,6 @@
         el.className = 'click-phrase';
         el.textContent = randomPhrase();
 
-        // Random position (keep away from edges so text stays on screen)
         const margin = 24;
         const w = window.innerWidth - margin * 2;
         const h = window.innerHeight - margin * 2;

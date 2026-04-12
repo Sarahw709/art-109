@@ -3,7 +3,6 @@ body {
     margin: 0;
 }
 
-/* Center hint — pointer-events: none so the first click still reaches the page */
 .click-hint {
     position: fixed;
     inset: 0;
@@ -23,7 +22,6 @@ body {
     opacity: 0;
 }
 
-/* Phrases spawned by js/main.js on click */
 .click-phrase {
     position: fixed;
     pointer-events: none;
