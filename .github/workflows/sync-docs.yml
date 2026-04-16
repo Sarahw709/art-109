@@ -20,10 +20,10 @@ jobs:
 
       - name: Sync files to docs folder
         run: |
-          # Sync 03 portfolio (root of site)
-          rm -rf docs/css docs/images
+          # Sync 07 as the root of the site (docs/)
+          rm -rf docs/css docs/images docs/js docs/projects docs/resume
           rm -f docs/index.html
-          cp -r Tutorials/03-css-single-page-portfolio/* docs/
+          cp -r Tutorials/07-css-portfolio-grid-multiple-pages/* docs/
           touch docs/.nojekyll
           # Sync 04-css-transitions (subfolder)
           rm -rf docs/04-css-transitions
@@ -37,8 +37,7 @@ jobs:
           rm -rf docs/06-dom
           cp -r Tutorials/06-dom docs/
           # Sync 07-css-portfolio-grid-multiple-pages (subfolder)
-          rm -rf docs/07-css-portfolio-grid-multiple-pages
-          cp -r Tutorials/07-css-portfolio-grid-multiple-pages docs/
+          # (07 is already copied to docs/ root above)
           # Sync 08-css-portfolio-grid-lightbox (subfolder)
           rm -rf docs/08-css-portfolio-grid-lightbox
           cp -r Tutorials/08-css-portfolio-grid-lightbox docs/
