@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Neon Diary — Retro Blog</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="page-frame">
+    <header class="site-header">
+      <h1 class="logo">NEON DIARY</h1>
+      <p class="tag">a chaotic Y2K personal blog</p>
+      <marquee behavior="alternate" class="marquee">welcome to my pixel paradise ✧ ✧ ✧</marquee>
+      <div class="gif-strip" aria-hidden="true">
+        <img class="gif-img" src="images/200.gif" alt="sparkle gif">
+        <img class="gif-img" src="images/4fab156635f10bd92564cd5315afa945.gif" alt="neon gif">
+        <img class="gif-img" src="images/9b5823d7f5f28ddbd26a6dfb7b50f4b1.gif" alt="retro gif">
+      </div>
+    </header>
+
+    <nav class="main-nav">
+      <a href="#">home</a>
+      <a href="#posts">posts</a>
+      <a href="#about">about</a>
+      <a href="#guestbook">guestbook</a>
+    </nav>
+
+    <main class="content">
+      <section id="posts" class="posts">
+        <article class="post">
+          <h2>time capsule: my first website <img class="inline-gif" src="images/200.gif" alt="mini spark"></h2>
+          <div class="meta">posted april 1, 2001 — by me</div>
+          <p>i found an old floppy with html files and animated gifs. the colors are loud, the tables are crooked, and the <span class="retro">blink</span> is everywhere.</p>
+          <p class="read-more"><a href="#">read more</a></p>
+        </article>
+
+        <article class="post">
+          <h2>how to make a neon button <img class="inline-gif" src="images/4fab156635f10bd92564cd5315afa945.gif" alt="button sparkle"></h2>
+          <div class="meta">posted march 28, 2002 — by me</div>
+          <p>use lots of gradients, put a bevel on it, and add an animated sparkle on hover. also set your font-size to 20px and call it retro.</p>
+          <p class="read-more"><a href="#">read more</a></p>
+        </article>
+      </section>
+
+      <aside class="sidebar">
+        <div class="widget glass">
+          <h3>about</h3>
+          <p>i blog about pixel art, broken layouts, and the aesthetics of dial-up nostalgia.</p>
+        </div>
+
+        <div id="guestbook" class="widget guestbook">
+          <h3>guestbook</h3>
+          <form id="guest-form">
+            <input type="text" id="name" placeholder="your name">
+            <textarea id="message" rows="3" placeholder="your message"></textarea>
+            <button type="submit" class="neon">sign guestbook</button>
+          </form>
+          <ul id="entries"></ul>
+          <div class="guest-gifs">
+            <img src="images/9b5823d7f5f28ddbd26a6dfb7b50f4b1.gif" alt="heart" class="gif-img-small">
+            <img src="images/200.gif" alt="spark" class="gif-img-small">
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="site-footer">
+      <div class="ticker">★ pixel hearts ~ glitter ~ animated gifs ★</div>
+      <div class="credits">designed like 2002 • built now</div>
+    </footer>
+  </div>
+
+  <script>
+    // tiny guestbook interactivity
+    const form = document.getElementById('guest-form');
+    const entries = document.getElementById('entries');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const name = document.getElementById('name').value || 'anon';
+      const msg = document.getElementById('message').value || '...';
+      const li = document.createElement('li');
+      li.innerHTML = `<strong>${escapeHtml(name)}</strong>: ${escapeHtml(msg)}`;
+      entries.prepend(li);
+      form.reset();
+    });
+    function escapeHtml(s){ return s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'); }
+
+    // little blinking retro text
+    const b = document.querySelectorAll('.retro');
+    setInterval(()=> b.forEach(n => n.style.visibility = (n.style.visibility==='hidden'?'visible':'hidden')),700);
+  </script>
+</body>
+</html>
