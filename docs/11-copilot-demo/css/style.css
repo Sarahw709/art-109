@@ -1,0 +1,66 @@
+/* Y2K retro styling */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+:root{
+  --bg1:#ff9a9e; --bg2:#fad0c4; --neon:#00f0ff; --accent:#ff66c4; --glass:rgba(255,255,255,0.08);
+  --neon2: #7cff00; --hot:#ff2d95;
+}
+*{box-sizing:border-box}
+.html,body{ }
+/* use local smooth background image with a subtle animated gradient overlay */
+html,body{
+  height:100%;
+  margin:0;
+  font-family:VT323, monospace;
+  color:#04102a;
+  background-image: url('../images/smooth-background-combining-pixel-pattern-and-bitmap-grid-inspired-by-early-game-aesthetics-and-y2k-digital-trends-illustration-vector.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.gif-strip{display:flex;gap:12px;justify-content:center;padding:8px;margin-top:8px;overflow:auto}
+.gif-img{height:160px;border:none;border-radius:10px;transform-origin:center;animation:floaty 6s ease-in-out infinite}
+.gif-img:hover{transform:translateY(-8px) scale(1.06) rotate(-1.5deg)}
+.inline-gif{height:36px;vertical-align:middle;margin-left:10px}
+.gif-img-small{height:96px;margin:6px;border:none;border-radius:8px}
+.page-frame{max-width:1100px;margin:24px auto;padding:16px;border:6px solid #fff3;border-radius:8px;box-shadow:0 10px 0 rgba(0,0,0,0.2);background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent)}
+.site-header{text-align:center;padding:6px}
+.logo{font-family:'Press Start 2P',monospace;color:var(--neon);text-shadow:0 0 8px rgba(0,240,255,0.6), 2px 2px 0 rgba(0,0,0,0.2);margin:6px 0}
+.logo{animation:neonPulse 2.6s ease-in-out infinite}
+.tag{font-size:14px;color:#ff1493}
+.marquee{margin:6px 0;color:#fff;background:linear-gradient(90deg,#ffeb3b,#ff66c4);padding:6px;border-radius:4px}
+.main-nav{display:flex;gap:8px,align-items:center;justify-content:center;margin:10px 0}
+.main-nav a{background:linear-gradient(180deg,#fff,#ffd6f0);padding:8px 12px;border:2px solid #000;color:#000;text-decoration:none;font-weight:bold;box-shadow:2px 2px 0 rgba(0,0,0,0.2)}
+.main-nav a{transition:transform .2s, box-shadow .2s}
+.main-nav a:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(255,50,150,0.12)}
+.content{display:grid;grid-template-columns:2fr 1fr;gap:16px;padding:12px}
+.post{background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));padding:12px;border:3px groove #ffc0cb;border-radius:6px}
+.post h2{font-family:'Press Start 2P',monospace;color:#1f3057;font-size:18px;margin:0 0 6px}
+.meta{font-size:12px;color:#6b3b3b;margin-bottom:8px}
+.read-more a{background:linear-gradient(90deg,#00f0ff,#ff66c4);color:#001; padding:6px 8px;border-radius:4px;text-decoration:none;font-weight:bold}
+.sidebar .widget{background:var(--glass);padding:10px;border:2px solid rgba(255,255,255,0.06);border-radius:6px;margin-bottom:12px}
+input,textarea{width:100%;padding:8px;margin:6px 0;border:2px inset #ffe4e1;background:#fffefc}
+button.neon{background:linear-gradient(90deg,#00f0ff,#ff66c4);border:2px solid #fff;color:#001;padding:8px 12px;font-weight:bold;cursor:pointer;box-shadow:0 6px 0 rgba(0,0,0,0.12)}
+.site-footer{margin-top:12px;text-align:center;padding:8px;font-size:12px}
+.ticker{animation:slide 8s linear infinite;background:linear-gradient(90deg, rgba(255,255,255,0.06), transparent);padding:6px;margin-bottom:6px}
+@keyframes slide{0%{transform:translateX(0)}50%{transform:translateX(-10%)}100%{transform:translateX(0)}}
+.blink{animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+@keyframes neonPulse{0%{text-shadow:0 0 6px rgba(0,240,255,0.5), 0 0 12px rgba(255,20,147,0.12)}50%{text-shadow:0 0 18px rgba(0,240,255,0.9), 0 0 28px rgba(255,20,147,0.28)}100%{text-shadow:0 0 6px rgba(0,240,255,0.5), 0 0 12px rgba(255,20,147,0.12)}}
+@keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+
+@keyframes bgmove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+.neon{position:relative;overflow:visible}
+.neon::after{content:"";position:absolute;inset:0;border-radius:6px;box-shadow:0 0 30px rgba(0,240,255,0.35),0 0 10px rgba(255,20,147,0.18);opacity:0;transition:opacity .18s}
+.neon:hover::after{opacity:1}
+.read-more a{transition:transform .18s}
+.read-more a:hover{transform:translateY(-4px) scale(1.03)}
+
+/* Custom phone cursor (placed at images/phone-cursor.png) */
+/* use a smaller cursor for a less intrusive pointer; hotspot set to image center (44x64 -> 22 32) */
+body{cursor: url('../images/phone-cursor-xs.png') 22 32, auto}
+/* Retro foil: pixel border and little sparkle */
+.post::after{content:"";display:block;height:6px;margin-top:8px;background:linear-gradient(90deg, rgba(255,255,255,0.2), rgba(0,0,0,0.1));border-radius:3px}
+/* responsive */
+@media(max-width:760px){.content{grid-template-columns:1fr}.main-nav{flex-wrap:wrap}}

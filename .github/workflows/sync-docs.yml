@@ -47,6 +47,9 @@ jobs:
           # Sync 10-net-art (subfolder)
           rm -rf docs/10-net-art
           cp -r Tutorials/10-net-art docs/
+          # Sync 11-copilot-demo (subfolder)
+          rm -rf docs/11-copilot-demo
+          cp -r Tutorials/11-copilot-demo docs/
 
       - name: Commit and push changes
         run: |
