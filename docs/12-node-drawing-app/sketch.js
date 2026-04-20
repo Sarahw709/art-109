@@ -1,38 +1,54 @@
-// ITP Networked Media, Fall 2014
-// https://github.com/shiffman/itp-networked-media
-// Daniel Shiffman
-// Video: https://www.youtube.com/watch?v=i6eP1Lw4gZk
+// Shared canvas: many clients can draw; each gets a color from the server.
 
 var socket;
+var myColor = [220, 220, 220];
+var BRUSH = 20;
 
 function setup() {
   createCanvas(400, 400).parent('sketch-holder');
   background(0);
-  // Same as the video's io.connect('http://localhost:3000') when you open this site from that server.
-  // Using io() follows whatever host/port you used in the browser (e.g. PORT=3456).
+
   socket = io();
-  socket.on('mouse', function (data) {
-    console.log('Got: ' + data.x + ' ' + data.y);
-    fill(0, 0, 255);
+
+  socket.on('you', function (profile) {
+    myColor = profile.color;
+  });
+
+  socket.on('history', function (points) {
     noStroke();
-    ellipse(data.x, data.y, 20, 20);
+    for (var i = 0; i < points.length; i++) {
+      var p = points[i];
+      fill(p.color[0], p.color[1], p.color[2]);
+      ellipse(p.x, p.y, BRUSH, BRUSH);
+    }
+  });
+
+  socket.on('mouse', function (data) {
+    fill(data.color[0], data.color[1], data.color[2]);
+    noStroke();
+    ellipse(data.x, data.y, BRUSH, BRUSH);
   });
 }
 
 function draw() {}
 
-function mouseDragged() {
-  fill(255);
+function drawStroke(x, y) {
+  fill(myColor[0], myColor[1], myColor[2]);
   noStroke();
-  ellipse(mouseX, mouseY, 20, 20);
-  sendmouse(mouseX, mouseY);
+  ellipse(x, y, BRUSH, BRUSH);
+  sendmouse(x, y);
+}
+
+function mouseDragged() {
+  drawStroke(mouseX, mouseY);
+}
+
+function touchMoved() {
+  drawStroke(touchX, touchY);
+  return false;
 }
 
 function sendmouse(xpos, ypos) {
-  console.log('sendmouse: ' + xpos + ' ' + ypos);
-  var data = {
-    x: xpos,
-    y: ypos,
-  };
-  socket.emit('mouse', data);
+  if (!socket || !socket.connected) return;
+  socket.emit('mouse', { x: xpos, y: ypos });
 }
