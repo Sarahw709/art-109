@@ -1,8 +1,5 @@
-// Based off of Shawn Van Every's Live Web
-// http://itp.nyu.edu/~sve204/liveweb_fall2013/week3.html
-// Matches Coding Train: https://github.com/CodingTrain/sockets-and-p5
-
 var express = require('express');
+var path = require('path');
 var app = express();
 
 var port = process.env.PORT || 3000;
@@ -17,7 +14,8 @@ function listen() {
   console.log('Example app listening at http://' + addr.address + ':' + addr.port);
 }
 
-app.use(express.static('public'));
+// Serve this folder (where index.html lives), not cwd-relative "public"
+app.use(express.static(path.join(__dirname)));
 
 var { Server } = require('socket.io');
 var io = new Server(server);
