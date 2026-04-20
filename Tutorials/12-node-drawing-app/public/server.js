@@ -6,4 +6,4 @@ var server = app.listen(3000);
 
 app.use(express.static('public'));
 
-console.log("hello world");
+console.log('Server running at http://localhost:3000');
