@@ -1,5 +1,6 @@
 function setup() {
-    createCanvas(200, 200);
+    // Put the canvas inside <main> so CSS that targets main / main canvas applies
+    createCanvas(200, 200).parent('sketch-holder');
 }
 
 function draw() {
