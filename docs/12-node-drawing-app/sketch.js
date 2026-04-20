@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 // Shared canvas: many clients can draw; each gets a color from the server.
+=======
+
+>>>>>>> ae87e8229897b425d153ce4bbb2ef42d793d0c55
 
 var socket;
 var myColor = [220, 220, 220];
@@ -7,7 +11,11 @@ var BRUSH = 20;
 function setup() {
   createCanvas(400, 400).parent('sketch-holder');
   background(0);
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> ae87e8229897b425d153ce4bbb2ef42d793d0c55
   socket = io();
 
   socket.on('you', function (profile) {
