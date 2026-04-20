@@ -50,6 +50,11 @@ jobs:
           # Sync 11-copilot-demo (subfolder)
           rm -rf docs/11-copilot-demo
           cp -r Tutorials/11-copilot-demo docs/
+          # 12-node-drawing-app: static files only (GitHub Pages cannot run Node/Express)
+          rm -rf docs/12-node-drawing-app
+          mkdir -p docs/12-node-drawing-app
+          cp -r Tutorials/12-node-drawing-app/public/* docs/12-node-drawing-app/
+          rm -f docs/12-node-drawing-app/server.js
 
       - name: Commit and push changes
         run: |
