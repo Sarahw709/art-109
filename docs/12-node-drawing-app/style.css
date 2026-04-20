@@ -1,6 +1,27 @@
 html, body {
   margin: 0;
   padding: 0;
+  font-family: system-ui, sans-serif;
+}
+
+.pad-hint {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  color: #333;
+  background: #eee;
+}
+
+.pad-hint kbd {
+  padding: 0.1rem 0.35rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background: #fff;
+}
+
+#sketch-holder {
+  border: 1px solid #ccc;
+  width: fit-content;
 }
 
 canvas {
