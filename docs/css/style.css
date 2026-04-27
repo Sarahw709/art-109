@@ -193,7 +193,6 @@ main {
     color: var(--bg-color-1);
     display: block;
     line-height: 0;
-    /* Same image box for every tile so the brown padding looks even on all sides */
     aspect-ratio: 4 / 3;
     overflow: hidden;
 }
