@@ -156,6 +156,10 @@ main {
     margin: 2rem 0;
 }
 
+.portfolio-content h3 {
+    margin: 2rem 0 1rem;
+}
+
 /* project content is for project pages */
 .project-content {
     padding: 2rem;
@@ -187,6 +191,17 @@ main {
 .portfolio-item a {
     text-decoration: none;
     color: var(--bg-color-1);
+    display: block;
+    line-height: 0;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+}
+
+.portfolio-item a img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .portfolio-item p {
