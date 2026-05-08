@@ -1,0 +1,52 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  --layout-gap: clamp(1.5rem, 5vh, 3rem);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: var(--layout-gap) 1rem 1rem;
+  gap: var(--layout-gap);
+  font-family: monospace;
+}
+
+.site-header {
+  flex-shrink: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.title {
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0;
+  font-size: clamp(1.25rem, 4vw, 2rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.stage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0 1rem;
+  min-height: 0;
+}
+
+#webcam {
+  display: block;
+  max-width: min(92vw, 640px);
+  max-height: min(72vh, 480px);
+  width: auto;
+  height: auto;
+}
