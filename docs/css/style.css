@@ -75,6 +75,8 @@ nav a:hover {
     align-items: center;
 }
 
+.nav-brand h1{font-size:2.6rem;margin:0;line-height:1}
+
 .hamburger {
     display: none;
     background: none;
