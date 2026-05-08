@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../.."
+		},
+		{
+			"path": "../../../../Art101_Portfolio"
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5502
+	}
+}
