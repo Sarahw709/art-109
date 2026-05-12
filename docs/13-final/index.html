@@ -11,8 +11,22 @@
         <h1 class="title">Unstable Reflection</h1>
     </header>
     <main class="stage">
-        <video id="webcam" autoplay playsinline muted width="640" height="480"></video>
+        <div class="video-stack">
+            <video id="webcam" autoplay playsinline muted></video>
+            <canvas id="display" width="640" height="480" aria-label="Distorted webcam feed"></canvas>
+            <button
+                type="button"
+                class="error-overlay"
+                aria-label="Dismiss error dialog"
+                aria-hidden="true"
+            >
+                <img src="Generic_error_message.png" alt="" width="320" draggable="false" />
+            </button>
+        </div>
     </main>
     <script src="js/webcam.js"></script>
+    <script src="js/effects.js"></script>
+    <script src="js/error-overlay.js"></script>
+    <script src="js/title-glitch.js"></script>
 </body>
 </html>

@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 html,
 body {
   margin: 0;
@@ -11,17 +15,22 @@ body {
 }
 
 body {
-  --layout-gap: clamp(1.5rem, 5vh, 3rem);
+  /* rem/vw only — vh shifts when mobile browser chrome shows/hides (layout “bounce”) */
+  --title-webcam-band: clamp(2rem, 1.75rem + 2.5vw, 4.25rem);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding: var(--layout-gap) 1rem 1rem;
-  gap: var(--layout-gap);
+  min-height: 100dvh;
+  padding: 0 1rem 1rem;
+  gap: 0;
   font-family: monospace;
+  overflow-x: hidden;
 }
 
 .site-header {
   flex-shrink: 0;
+  margin-top: var(--title-webcam-band);
+  margin-bottom: var(--title-webcam-band);
   padding: 0;
   text-align: center;
 }
@@ -32,21 +41,90 @@ body {
   font-size: clamp(1.25rem, 4vw, 2rem);
   font-weight: 600;
   letter-spacing: 0.02em;
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  color: hsl(60, 4%, 5%);
+  --decay: 0;
+  white-space: nowrap;
+}
+
+.title-char {
+  display: inline-block;
+  white-space: pre;
+  transition: none;
 }
 
 .stage {
   flex: 1;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   padding: 0 0 1rem;
   min-height: 0;
 }
 
+.video-stack {
+  position: relative;
+  width: min(92vw, 640px);
+  max-width: 640px;
+  aspect-ratio: 4 / 3;
+  max-height: min(480px, 32rem);
+}
+
 #webcam {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#display {
+  position: relative;
+  z-index: 0;
   display: block;
-  max-width: min(92vw, 640px);
-  max-height: min(72vh, 480px);
-  width: auto;
+  width: 100%;
+  height: 100%;
+  background: #111;
+}
+
+/* Generic error dialog — pops up over upper frame (faces), click to dismiss */
+.error-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 6% 8% 0;
+  margin: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  /* <button> UA styles often use overflow:hidden — clips translated img */
+  overflow: visible !important;
+  transition: opacity 0.15s ease, visibility 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.error-overlay.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.error-overlay img {
+  width: min(82%, 320px);
+  max-width: 100%;
   height: auto;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.55));
 }
